@@ -10,8 +10,9 @@ def solution(x: np.array, y: np.array) -> bool: # Одна или две выб�
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
     
+    alpha = 0.01
     effect = permutation_test((x, y), lambda x, y, axis: np.mean(x, axis=axis) - np.mean(y, axis=axis), 
                  vectorized=True, 
-                 n_resamples=1000,
-                 alternative='greater').pvalue < 0.01
+                 n_resamples=5000,
+                 alternative='greater').pvalue < alpha
     return effect # Ваш ответ, True или False
